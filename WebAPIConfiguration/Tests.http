@@ -1,0 +1,6 @@
+@WebAPIConfiguration_HostAddress = http://localhost:5291
+
+GET {{WebAPIConfiguration_HostAddress}}/get-settings/
+Accept: application/json
+
+###
