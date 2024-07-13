@@ -11,10 +11,16 @@ var app = builder.Build();
 app.MapGet("/get-settings", (IConfiguration config, IOptions<Settings> options)
     =>
 {
-    var value1 = config["Settings:SettingKey1"];
+    // without binding
+    var value1 = config.GetValue<string>("Settings:SettingKey1");
+
+    // with binding
     var value2 = config.GetSection(nameof(Settings))
-                       .Get<Settings>()?.SettingKey2;
-    var value3 = options.Value.SettingKey3;
+                       .Get<Settings>()?
+                       .SettingKey2;
+    // with IOptions
+    var value3 = options.Value
+                        .SettingKey3;
 
     return new
     {
