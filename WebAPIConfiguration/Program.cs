@@ -8,8 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
-app.MapGet("/get-settings", (IConfiguration config, IOptions<Settings> options)
-    =>
+app.MapGet("/get-settings", (IConfiguration config, IOptions<Settings> options) =>
 {
     // without binding
     var value1 = config.GetValue<string>("Settings:SettingKey1");
